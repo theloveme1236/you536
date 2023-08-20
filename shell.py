@@ -31,7 +31,8 @@ from seleniumbase import Driver
 cluster = MongoClient('mongodb+srv://theloveme1238:zx5LtPcgLpcpIh7D@cluster0.pzuhxov.mongodb.net/?retryWrites=true&w=majority')
 db = cluster["my_database"]
 collection = db["users"]        
-driver = Driver(uc=True)
+#driver = Driver(uc=True)
+driver = get_driver("chrome")
 driver.implicitly_wait(10)
             
 driver.maximize_window()
@@ -66,24 +67,24 @@ def like3like_login():
                 print(email)
                 password = '1234thelove'
                 driver.get("https://www.like4like.org/login/")
-                time.sleep(2)
+                #time.sleep(2)
                 driver.find_element(By.ID, 'username').send_keys(email)
-                time.sleep(2)
+                #time.sleep(2)
                 driver.find_element(By.ID, 'password').send_keys(password)
-                time.sleep(2)
+                #time.sleep(2)
                 try:
                     driver.find_element(By.XPATH, '/html/body/div[6]/form/fieldset/table/tbody/tr[8]/td/span').click()
                 except:
                     pass
-                time.sleep(10)
+                time.sleep(2)
                 driver.get("https://www.like4like.org/user/")
-                time.sleep(10)
+                time.sleep(2)
                 current_url = driver.current_url
                 if current_url=='https://www.like4like.org/user/':
                     print(current_url)
                     print('login_usearname_passowrd')
                     driver.get("https://www.like4like.org/#social-media-platform-list")
-                    time.sleep(5)
+                    time.sleep(2)
                     cookies_add = "like_cookies_{}.pkl".format(email)
                     pickle.dump(driver.get_cookies(), open("like_cookies_{}.pkl".format(email), "wb"))
                     email_to_find = email
@@ -136,24 +137,24 @@ for cookies_totel in os.listdir(os.getcwd()):
         print(email)
         password = '1234thelove'
         driver.get("https://www.like4like.org/login/")
-        time.sleep(2)
+        #time.sleep(2)
         driver.find_element(By.ID, 'username').send_keys(email)
-        time.sleep(2)
+        #time.sleep(2)
         driver.find_element(By.ID, 'password').send_keys(password)
-        time.sleep(2)
+        #time.sleep(2)
         try:
             driver.find_element(By.XPATH, '/html/body/div[6]/form/fieldset/table/tbody/tr[8]/td/span').click()
         except:
             pass
-        time.sleep(3)
+        time.sleep(1)
         driver.get("https://www.like4like.org/user/")
-        time.sleep(3)
+        time.sleep(1)
 
         current_url = driver.current_url
         if current_url=='https://www.like4like.org/user/':
             print(current_url)
             driver.get("https://www.like4like.org/#social-media-platform-list")
-            time.sleep(3)
+            time.sleep(1)
             cookies_add = "like_cookies_{}.pkl".format(email)
             pickle.dump(driver.get_cookies(), open("like_cookies_{}.pkl".format(email), "wb"))
             email_to_find = email
@@ -175,7 +176,7 @@ for cookies_totel in os.listdir(os.getcwd()):
                     print(ss)
                     continue
             driver.get("https://www.like4like.org/user/")
-            time.sleep(4)
+            time.sleep(1)
             current_url = driver.current_url
             if current_url=='https://www.like4like.org/user/':
                 print('login_cookies')
@@ -212,7 +213,7 @@ for cookies_totel in os.listdir(os.getcwd()):
                     cookies = file.readlines()
                 cookis_like()
                 driver.get("https://www.youtube.com/account")
-                time.sleep(10) 
+                time.sleep(1) 
                 account_true = driver.current_url
                 if account_true=='https://www.youtube.com/account' or account_true=='https://www.youtube.com/account/':
                     
@@ -541,7 +542,7 @@ def like():
                 for value_aria_label in aria_label_values:
                         print(value_aria_label)
                 like_old_count = value_aria_label.replace('like this video along with', '').replace('other people', '').strip().replace('likes', '').strip().replace('معجبين', '').strip().replace('أبدى إعجابه بهذا الفيديو إضافة إلى', '').strip().replace('شخصًا آخر', '').strip().replace('معجبًا', '').strip().replace('أشخاص آخرين', '').strip()#.split(',')
-                time.sleep(2)
+                #time.sleep(2)
                 driver.find_element(By.ID, 'segmented-like-button').click()
                 time.sleep(2)
                 driver.refresh()
@@ -561,12 +562,10 @@ def like():
                     print('like_old_count:',like_old_count)
                     print('==')
                     print('like_new_count:',like_new_count)
-                    time.sleep(2)
-                    driver.find_element(By.ID, 'segmented-like-button').click()
-                    time.sleep(2)
+                    #time.sleep(2)
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    time.sleep(5)
+                    #time.sleep(5)
                     driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
                 elif like_old_count < like_new_count  :
@@ -581,7 +580,7 @@ def like():
                         
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    time.sleep(5)
+                    #time.sleep(5)
                     driver.find_element(By.CSS_SELECTOR, '[alt="Click On The Button To Confirm Interaction!"]').click()
                         
                 elif like_old_count > like_new_count:
@@ -590,22 +589,19 @@ def like():
                     print('like_old_count:',like_old_count)
                     print('>')
                     print('like_new_count:',like_new_count)
-                    time.sleep(2)
+                    #time.sleep(2)
                     driver.find_element(By.ID, 'segmented-like-button').click()
-                    time.sleep(2)
+                    #time.sleep(2)
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    time.sleep(5)
+                    #time.sleep(5)
                     driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
                 else:
                     print('errro')
-                    time.sleep(2)
-                    driver.find_element(By.ID, 'segmented-like-button').click()
-                    time.sleep(2)
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    time.sleep(5)
+                    #time.sleep(5)
                     driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
                 email_to_find = email
@@ -640,10 +636,10 @@ def like():
     
 
 
-
-Subscribe()
 like()
+Subscribe()
+
 try:
-    driver.close()
+    driver.quit()
 except:
     pass
