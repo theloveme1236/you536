@@ -554,6 +554,7 @@ def like():
                     if con_like_2 == 5:
                         print('con_like_2')
                         break
+                    con_like_2 +=1
                     print('like_old_count:',like_old_count)
                     print('==')
                     print('like_new_count:',like_new_count)
