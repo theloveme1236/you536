@@ -26,10 +26,12 @@ from selenium.common.exceptions import NoSuchWindowException
 import sys
 import random
 from seleniumbase import get_driver
+from seleniumbase import Driver
+
 cluster = MongoClient('mongodb+srv://theloveme1238:zx5LtPcgLpcpIh7D@cluster0.pzuhxov.mongodb.net/?retryWrites=true&w=majority')
 db = cluster["my_database"]
 collection = db["users"]        
-driver = get_driver("chrome")
+driver = Driver(uc=True)
 driver.implicitly_wait(10)
             
 driver.maximize_window()
@@ -638,8 +640,9 @@ def like():
     
 
 
-like()
+
 Subscribe()
+like()
 try:
     driver.close()
 except:
