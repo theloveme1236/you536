@@ -1,5 +1,6 @@
 
 import os
+'''
 os.system('sudo apt update -y')
 os.system('sudo apt install python3-pip -y')
 os.system('sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb')
@@ -7,6 +8,7 @@ os.system('sudo apt install ./google-chrome-stable_current_amd64.deb -y')
 os.system('pip install selenium')
 os.system('pip install pymongo')
 os.system('pip install seleniumbase')
+'''
 import subprocess
 import time
 from selenium.webdriver.common.keys import Keys
@@ -632,4 +634,5 @@ def like():
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
             like_erro()
 
-#like()
+like()
+Subscribe()
