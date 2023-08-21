@@ -284,7 +284,7 @@ def failed_success_minutes():
         You_have_failed  = erro_minutes.split(' success rate validation')[0]
         if You_have_failed == str('You have failed our'):
             print('You have failed our')
-            stop_def_Subscribe= 'stop'
+            
             minutes_to_add =  erro_minutes.split('next ')[-1].split(' minutes.')[0]
             print(minutes_to_add)
             current_time = datetime.utcnow()
@@ -303,25 +303,31 @@ def failed_success_minutes():
             if current_url=='https://www.like4like.org/earn-credits.php?feature=youtubes':
                 print('Subscribe_erro_stop_time')
                 Subscribe_erro_stop_time = 'stop'
+                stop_def_Subscribe= 'stop'
                 collection.update_one(
                 {"email": email_to_find},
                 {"$set": {"limit_sub": failed_success}}) 
             if current_url=='https://www.like4like.org/earn-credits.php?feature=youtube':
                 print('like_erro_stop_time')
                 like_erro_stop_time = 'stop'
+                stop_def_like  = 'stop'
                 collection.update_one(
                 {"email": email_to_find},
                 {"$set": {"limit_like": failed_success}})
             
         if erro_minutes == 'No tasks are currently available, please try again later...':
             print('No tasks are currently available')
-            stop_def_Subscribe= 'stop'
-            
-            if stop_def_like_con == 5:
-                print('stop_def_like_con')
-                stop_def_like  = 'stop'
-            stop_def_like_con +=1
-            print('stop_def_like_con',stop_def_like_con)
+            current_url = driver.current_url
+            if current_url=='https://www.like4like.org/earn-credits.php?feature=youtubes':
+                print('Subscribe_erro_stop_time')
+                stop_def_Subscribe= 'stop'
+            if current_url=='https://www.like4like.org/earn-credits.php?feature=youtube':
+                print('like_erro_stop_time')            
+                if stop_def_like_con == 3:
+                    print('stop_def_like_con')
+                    stop_def_like  = 'stop'
+                stop_def_like_con +=1
+                print('stop_def_like_con',stop_def_like_con)
         #driver.quit()
     except NoSuchWindowException:
         print('failed_success_minutes')
