@@ -489,12 +489,12 @@ def like_erro():
     try:
         if like_erro_stop_time == 'stop':
             print('Subscribe__stop_time_NoSuchElementException')
-            #Subscribe()
+            Subscribe()
         con_like+=1
         if con_like == 5:
             print('con_like')
             stop_def_like  = 'stop'
-            #Subscribe()
+            Subscribe()
 
         driver.switch_to.window(driver.window_handles[0])
         driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
@@ -526,7 +526,6 @@ def like():
             
 
             if stop_def_like == 'stop':
-                driver.close()
                 print('stop_def_like_stop_def_like_stop_def_like')
                 break
             time.sleep(5)
