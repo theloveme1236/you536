@@ -586,7 +586,7 @@ def like():
                         
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    #time.sleep(5)
+                    time.sleep(5)
                     driver.find_element(By.CSS_SELECTOR, '[alt="Click On The Button To Confirm Interaction!"]').click()
                         
                 elif like_old_count > like_new_count:
@@ -600,7 +600,7 @@ def like():
                     #time.sleep(2)
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    #time.sleep(5)
+                    time.sleep(5)
                     driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
                 else:
