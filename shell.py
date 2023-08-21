@@ -494,7 +494,7 @@ def like_erro():
         if con_like == 5:
             print('con_like')
             stop_def_like  = 'stop'
-            Subscribe()
+            #Subscribe()
 
         driver.switch_to.window(driver.window_handles[0])
         driver.get("https://www.like4like.org/earn-credits.php?feature=youtube")
@@ -527,6 +527,7 @@ def like():
 
             if stop_def_like == 'stop':
                 print('stop_def_like_stop_def_like_stop_def_like')
+                driver.quit()
                 break
             time.sleep(5)
             element_control_click = driver.find_element(By.CSS_SELECTOR, "a[class^='cursor earn_pages_button profile_view_img']")
@@ -642,7 +643,7 @@ def like():
 
 
 like()
-Subscribe()
+#Subscribe()
 
 try:
     driver.quit()
